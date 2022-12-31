@@ -12,12 +12,153 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>reveal.js-intro</h1>
+				</section>
+
+				<section>
+							<h2>this is an h2-heading</h2>
+							<blockquote>
+								This is a blockquote
+							</blockquote>
+							<p style="background: indigo;font-size: smaller; text-align: right;">paragraph with font-size smaller and text-align right <br> <strong>strong</strong>, <em>em</em>, <a href="http://www.manuel-doemer.ch">a</a></p>
+							<p>r-hstack for multi-column-layout:</p>
+							<div class="r-hstack justify-around">
+								<ul style="font-size:smaller;"> 
+									<li>an unordered</li> 
+									<li>list</li>  
+								</ul>
+								<ol style="font-size:smaller;"> 
+									<li>an ordered</li> 
+									<li>list</li>  
+								</ol>
+							</div>
+							<pre><code data-trim class="js">
+								let programmingLanguages = [
+									{ name: 'java' },
+									{ name: 'javascript', staticallyTyped: false},
+									{ name: 'closure'}
+								]
+							</code></pre>
+				</section>
+
+				<section>
+					<h2>LaTex</h2>
+					<p>needs the math plugin:</p>
+					
+					<pre><code class="html">
+						<script src="plugin/math/math.js"></script>
+						<script>
+							Reveal.initialize({ plugins: [ RevealMath.KaTeX ] });
+						</script>
+					</code></pre>
+					<div class="r-hstack justify-between">
+						<div>
+							<pre><code class="LaTex" data-trim>
+								\[\begin{aligned}
+								\dot{x} &amp; = \sigma(y-x) \\
+								\dot{y} &amp; = \rho x - y - xz \\    
+								\dot{z} &amp; = -\beta z + xy
+								\end{aligned} \]
+							</code></pre>
+						</div>
+						<div>
+							\[\begin{aligned}
+							\dot{x} &amp; = \sigma(y-x) \\
+							\dot{y} &amp; = \rho x - y - xz \\
+							\dot{z} &amp; = -\beta z + xy
+							\end{aligned} \]
+						</div>
+					</div>	
+				</section>
+
+				<section>
+				<h2>Multi column-Layout with<br>r-hstack and r-vstack</h2>
+				<!-- r-hstack main axis horizontal: justify-center, justify-start, justify-end, justify-between (equal spacing between the elements), justify-around (equal spacing around all elements), justify-left -->
+				<div class="r-hstack justify-between">
+					<!-- items-center, -start, -end controls alignment of elements along secondary axis -->
+					<div class="r-vstack items-center">
+						<h6>first column</h6>
+						<p>items-center</p>
+						<p style="background: salmon">1.1</p>
+						<p style="background: indigo">1.2</p>
+					</div>
+					
+					<div class="r-vstack space-between items-start">
+						<h6>second column</h6>
+						<p>items-start</p>
+						<p style="background: salmon">2.1</p>
+						<p style="background: indigo">2.2</p>
+					</div>
+
+					<div class="r-vstack space-between items-end">
+						<h6>third column</h6>
+						<p>items-end</p>
+						<p style="background: salmon">3.1</p>
+						<p style="background: indigo">3.2</p>
+					</div>
+
+				</div>
+				<p style="text-align: left; font-size: small; color: pink;">paragraph with 'style="text-align: left;'</p>
+				</section>
+
+				<section>
+					<h2>embedding an image</h2>
+					<p style="font-size:smaller; text-align: left;">For html you need an extra <em>script</em>-element in the code:</p>
+					<pre style="font-size: small"><code class="html" data-noescape data-trim><script type="text/template">
+						<img data-src="graphs/mpl_line.svg" style="height:100%;">
+					</script></code></pre>
+						
+					<img data-src="graphs/mpl_line.svg" style="height:100%;">
+					
+				</section>
+
+				<section>
+					<h2>Alternative Layout</h2>
+					<div class="r-hstack justify-between">
+						<div class="r-vstack space-between items-start">
+							<pre style="font-size: medium"><code class="python" data-trim>
+								x = [1, 2, 3, 4, 5]
+								y = [6, 7, 2, 4, 5]
+
+								fig, ax = plt.subplots()
+								fig.savefig(os.path.join('presentation', 'graphs', 'mpl_line.svg'), 
+								facecolor='white')
+							</code></pre>
+						</div>
+						<div class="r-vstack space-between items-start">
+							<p style="font-size: large;">To display html an extra <em>script</em>-element in the code is required:</p>
+
+							<pre style="font-size: medium"><code class="html" data-noescape data-trim><script type="text/template">
+								<img data-src="graphs/mpl_line.svg" style="height:100%;">
+							</script></code></pre>
+
+							<img data-src="graphs/mpl_line.svg" style="height:100%;">
+						</div>
+					</div>
+
+					
+						
+					
+					
+				</section>
+
+				<section>
+					<h2>embedding an interactive graph in an iframe</h2>
+					
+					<pre style="font-size: large"><code class="html" data-noescape data-trim><script type="text/template">
+						<iframe class="r-stretch" data-src="graphs/bokeh_lineplot.html"></iframe>
+					</script></code></pre>
+					<!-- r-stretch layout helper resizes an element to cover the remaining vertical space in a slide. -->	
+					<iframe data-src="graphs/bokeh_lineplot.html" width="600px" height="300px"></iframe>
+					
+				</section>
+
 			</div>
 		</div>
 
@@ -25,6 +166,7 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -33,7 +175,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
 	</body>
