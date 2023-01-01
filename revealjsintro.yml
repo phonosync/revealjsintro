@@ -1,11 +1,11 @@
-name: revealgraphs
+name: revealjsintro
 channels:
   - anaconda
   - conda-forge
   - defaults
 dependencies:
   - bokeh=3.0.3
-  - jupyterlab
-  - pandas
+  - jupyterlab=3.3.2
+  - pandas=1.4.2
   - python=3.10
-  - seaborn
+  - seaborn=0.11.2
