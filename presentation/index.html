@@ -13,6 +13,9 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 
+		<!-- css for d3.js-elements -->
+		<link rel="stylesheet" href="d3.css">
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -141,10 +144,6 @@
 							<img data-src="graphs/mpl_line.svg" style="height:100%;">
 						</div>
 					</div>
-
-					
-						
-					
 					
 				</section>
 
@@ -156,6 +155,49 @@
 					</script></code></pre>
 					<!-- r-stretch layout helper resizes an element to cover the remaining vertical space in a slide. -->	
 					<iframe data-src="graphs/bokeh_lineplot.html" width="600px" height="300px"></iframe>
+					
+				</section>
+
+				<section>
+					<h2>embedding a d3.js-visualisation</h2>
+
+					<div class="r-hstack">
+						<div class="r-vstack" style="font-size:large; text-align: left;">
+							<ol>
+								<li>best to put the d3-code for each chart into a separate file: barchart.js</li>
+								<li>the css for all the d3-elements goes into a separate file: d3.css</li>
+								<li>in the html add a div for the d3-element
+									<pre><code class="html" data-trim>
+										<div id="barchart">
+											...
+										</div>
+									</code></pre>
+									and make sure to import the css and js:
+									<pre><code class="html" data-trim>
+										<div id="barchart">
+											<script src="https://d3js.org/d3.v7.min.js"></script>
+											<script src="barchart.js"></script>
+										</div>
+									</code></pre>
+								</li>
+									
+							</ol>
+						</div>
+						<div id="barchart">
+							<div id="tooltip">
+								<div class="tt-label">
+									label: <span></span>
+								</div>
+								<div class="tt-x">
+									x: <span></span>
+								</div>
+								<div class="tt-y">
+									y: <span></span>
+								</div>
+							</div>
+						</div>
+						
+					</div>
 					
 				</section>
 
@@ -178,5 +220,10 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
+
+		<!-- code fot the d3.js-chart-->
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<script src="barchart.js"></script>
+
 	</body>
 </html>
