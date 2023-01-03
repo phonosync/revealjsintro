@@ -54,12 +54,14 @@
 					<h2>LaTex</h2>
 					<p>needs the math plugin:</p>
 					
-					<pre><code class="html">
-						<script src="plugin/math/math.js"></script>
+					<pre><code class="html" data-noescape data-trim><script type="text/template">
+						<!-- 
+						<script src="plugin/math/math.js"> </script>
 						<script>
 							Reveal.initialize({ plugins: [ RevealMath.KaTeX ] });
 						</script>
-					</code></pre>
+						-->
+					</script></code></pre>
 					<div class="r-hstack justify-between">
 						<div>
 							<pre><code class="LaTex" data-trim>
@@ -78,6 +80,46 @@
 							\end{aligned} \]
 						</div>
 					</div>	
+				</section>
+
+				<section>
+					<h2>Tables</h2>
+					For example from a pandas-dataframe:
+					<pre><code class="python" data-trim>
+						print(df.to_html(max_rows=2))
+					</code></pre>
+					and then copy/paste into index.html
+
+					<table border="1" class="dataframe">
+						<thead>
+							<tr style="text-align: right;">
+								<th></th>
+								<th>x</th>
+								<th>y</th>
+								<th>label</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>0</th>
+								<td>0.4</td>
+								<td>20</td>
+								<td>one</td>
+							</tr>
+							<tr>
+								<th>...</th>
+								<td>...</td>
+								<td>...</td>
+								<td>...</td>
+							</tr>
+							<tr>
+								<th>5</th>
+								<td>0.9</td>
+								<td>60</td>
+								<td>six</td>
+							</tr>
+						</tbody>
+					</table>
 				</section>
 
 				<section>
