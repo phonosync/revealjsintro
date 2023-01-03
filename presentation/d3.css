@@ -10,10 +10,11 @@
   font-size: 15px;
   color: black;
   text-align: left;
-  border: 1px solid white;
+  border: 1px solid grey;
   position: absolute;
   padding: 10px;
   background-color: grey;
+  border-radius: 10px;
   display: none;
 }
 

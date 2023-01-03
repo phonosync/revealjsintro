@@ -114,10 +114,10 @@
 					<h2>embedding an image</h2>
 					<p style="font-size:smaller; text-align: left;">For html you need an extra <em>script</em>-element in the code:</p>
 					<pre style="font-size: small"><code class="html" data-noescape data-trim><script type="text/template">
-						<img data-src="graphs/mpl_line.svg" style="height:100%;">
+						<img data-src="graphs/mpl_scatter.svg" style="height:100%;">
 					</script></code></pre>
 						
-					<img data-src="graphs/mpl_line.svg" style="height:100%;">
+					<img data-src="graphs/mpl_scatter.svg" style="height:100%;">
 					
 				</section>
 
@@ -126,11 +126,10 @@
 					<div class="r-hstack justify-between">
 						<div class="r-vstack space-between items-start">
 							<pre style="font-size: medium"><code class="python" data-trim>
-								x = [1, 2, 3, 4, 5]
-								y = [6, 7, 2, 4, 5]
+								df = pd.read_json(fp_data)
 
 								fig, ax = plt.subplots()
-								fig.savefig(os.path.join('presentation', 'graphs', 'mpl_line.svg'), 
+								fig.savefig(os.path.join('presentation', 'graphs', 'mpl_scatter.svg'), 
 								facecolor='white')
 							</code></pre>
 						</div>
@@ -138,10 +137,10 @@
 							<p style="font-size: large;">To display html an extra <em>script</em>-element in the code is required:</p>
 
 							<pre style="font-size: medium"><code class="html" data-noescape data-trim><script type="text/template">
-								<img data-src="graphs/mpl_line.svg" style="height:100%;">
+								<img data-src="graphs/mpl_scatter.svg" style="height:100%;">
 							</script></code></pre>
 
-							<img data-src="graphs/mpl_line.svg" style="height:100%;">
+							<img data-src="graphs/mpl_scatter.svg" style="height:100%;">
 						</div>
 					</div>
 					
@@ -151,10 +150,10 @@
 					<h2>embedding an interactive graph in an iframe</h2>
 					
 					<pre style="font-size: large"><code class="html" data-noescape data-trim><script type="text/template">
-						<iframe class="r-stretch" data-src="graphs/bokeh_lineplot.html"></iframe>
+						<iframe class="r-stretch" data-src="graphs/bokeh_scatterplot.html"></iframe>
 					</script></code></pre>
 					<!-- r-stretch layout helper resizes an element to cover the remaining vertical space in a slide. -->	
-					<iframe data-src="graphs/bokeh_lineplot.html" width="600px" height="300px"></iframe>
+					<iframe data-src="graphs/bokeh_scatterplot.html" width="600px" height="300px"></iframe>
 					
 				</section>
 
@@ -164,21 +163,25 @@
 					<div class="r-hstack">
 						<div class="r-vstack" style="font-size:large; text-align: left;">
 							<ol>
-								<li>best to put the d3-code for each chart into a separate file: barchart.js</li>
-								<li>the css for all the d3-elements goes into a separate file: d3.css</li>
-								<li>in the html add a div for the d3-element
-									<pre><code class="html" data-trim>
+								<li>best to put the d3-code related code and styling into separate files: 
+									<ul>
+										<li>barchart.js</li>
+										<li>d3.css</li>
+									</ul>
+								</li>
+								<li>in the presentation-html add a <font face="courier">&lt;div&gt;</font> for the d3-element
+									<pre><code class="html" data-noescape data-trim><script type="text/template">
 										<div id="barchart">
 											...
 										</div>
-									</code></pre>
+									</script></code></pre>
 									and make sure to import the css and js:
-									<pre><code class="html" data-trim>
-										<div id="barchart">
+									<pre><code class="html" data-noescape data-trim><script type="text/template">
+										
 											<script src="https://d3js.org/d3.v7.min.js"></script>
 											<script src="barchart.js"></script>
-										</div>
-									</code></pre>
+										
+									</script></code></pre>
 								</li>
 									
 							</ol>
